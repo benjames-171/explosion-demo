@@ -13,6 +13,36 @@ components {
     w: 1.0
   }
 }
+components {
+  id: "pfx"
+  component: "/game/object/explosion.particlefx"
+  position {
+    x: 0.0
+    y: -10.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
+components {
+  id: "fire"
+  component: "/game/levels/fire.particlefx"
+  position {
+    x: 0.0
+    y: -14.0
+    z: 0.0
+  }
+  rotation {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+  }
+}
 embedded_components {
   id: "sprite2"
   type: "sprite"

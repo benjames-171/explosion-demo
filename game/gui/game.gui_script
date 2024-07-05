@@ -1,8 +1,7 @@
 local data = require "main.data"
 
 function update(self, dt)
-end
-
-function on_message(self, message_id, message, sender)
+	local text = string.format("%05d", data.score)
+	gui.set_text(gui.get_node("score"), text)
 end
 

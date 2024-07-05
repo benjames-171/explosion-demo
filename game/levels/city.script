@@ -1,9 +1,16 @@
-function init(self)
-end
-
-function final(self)
-end
+local data = require "main.data"
 
 function on_message(self, message_id, message, sender)
+	if message_id == hash("collision_response") then
+		data.cities = data.cities - 1
+		msg.post("#co", "disable")
+		msg.post("#sprite1", "disable")
+		msg.post("#sprite2", "disable")
+		particlefx.play("#pfx")
+		particlefx.play("#fire")
+		if data.cities <= 0 then
+			timer.delay(1, false, function() msg.post("view#gameover", "show") end)
+		end
+	end
 end
 

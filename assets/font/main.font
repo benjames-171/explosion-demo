@@ -1,6 +1,6 @@
-font: "/assets/font/pixelmix.ttf"
+font: "/assets/font/PixCon.ttf"
 material: "/builtins/fonts/font.material"
-size: 32
+size: 20
 antialias: 0
 alpha: 1.0
 outline_alpha: 0.0

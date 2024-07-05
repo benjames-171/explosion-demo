@@ -1,5 +1,14 @@
 local data = require "main.data"
 
+local function missile(self)
+	local pos = vmath.vector3(math.random(0, data.CANV_W), data.CANV_H + 32, 0)
+	local target = vmath.vector3(data.cityx[math.random(1,6)], data.cityy - 8, 0)
+	factory.create("#missile-fac", pos, nil, {target = target})
+	self.time = self.time * 0.99
+	if self.time < 0.25 then self.time = 0.25 end
+	timer.delay(self.time, false, missile)
+end
+
 function init(self)
 	for n = 1, 6 do
 		local pos = vmath.vector3(data.cityx[n], data.cityy, 0)
@@ -10,4 +19,7 @@ function init(self)
 		local pos = vmath.vector3(math.random(0, data.CANV_W*2), 32 + (n * 10), -0.5)
 		factory.create("#cloud-fac", pos)
 	end
+
+	self.time = 2
+	missile(self)
 end

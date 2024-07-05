@@ -8,10 +8,7 @@ function init(self)
 	for _ = 1, 5 do
 		math.random()
 	end
-end
-
-function update(self, dt)
-	--defos.set_cursor_visible(data.state ~= data.STATE_PLAYING)
+	self.reload = false
 end
 
 function on_message(self, message_id, message,sender)
@@ -21,8 +18,16 @@ function on_message(self, message_id, message,sender)
 	elseif message_id == hash("show_menu") then
 		msg.post("handler#game", "unload")
 		msg.post("handler#menu", "load")
+	elseif message_id == hash("reload_game") then
+		msg.post("handler#game", "unload")
+		self.reload = true
 	elseif message_id == hash("proxy_loaded") then
 		msg.post(sender, "enable")
+	elseif message_id == hash("proxy_unloaded") then
+		if self.reload then
+			self.reload = false
+			msg.post("handler#game", "load")
+		end
 	end
 end
 

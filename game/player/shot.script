@@ -5,10 +5,6 @@ go.property("target", vmath.vector3())
 local function explode(self)
 	go.delete()
 	factory.create("#exp-fac")
-
-	for _ = 1, 5 do
-		factory.create("#fb-fac")
-	end
 end
 
 function init(self)
@@ -22,12 +18,5 @@ end
 
 function final(self)
 	particlefx.stop("#pfx")
-end
-
-
-function on_message(self, message_id, message, sender)
-	if message_id == hash("collision_response") then
-		go.delete()
-	end
 end
 

@@ -18,6 +18,7 @@ local function input(self, action_id, action)
 		if gui.pick_node(gui.get_node("continue"), action.x, action.y) then
 			close(self)
 		elseif gui.pick_node(gui.get_node("quit"), action.x, action.y) then
+			data.sound("menu-back")
 			msg.post("main:/handler", "set_time_step", {factor = 1, mode = 0})
 			msg.post("player", "quit")
 		end

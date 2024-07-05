@@ -6,3 +6,9 @@ function init(self)
 	timer.delay(1, false, function() msg.post("#co", "disable") end)
 	timer.delay(1.5, false, function() go.delete() end)
 end
+
+function on_message(self, message_id, message)
+	if message_id == hash("collision_response") then
+		data.score = data.score + 10
+	end
+end
