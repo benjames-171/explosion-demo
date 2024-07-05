@@ -35,4 +35,9 @@ dependencies#1 = https://github.com/defold/lua-language-server/releases/download
 
 [particle_fx]
 max_particle_count = 2048
+max_count = 256
+max_emitter_count = 256
+
+[physics]
+gravity_y = -200.0
 

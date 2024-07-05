@@ -5,6 +5,10 @@ go.property("target", vmath.vector3())
 local function explode(self)
 	go.delete()
 	factory.create("#exp-fac")
+
+	for _ = 1, 5 do
+		factory.create("#fb-fac")
+	end
 end
 
 function init(self)

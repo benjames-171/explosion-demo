@@ -1,0 +1,9 @@
+local data = require "main.data"
+
+function init(self)
+	particlefx.play("#pfx")
+	data.sound("exp-large")
+	local force = vmath.vector3(math.random(-5000,5000), math.random(2500,5000), 0)
+	msg.post("#co", "apply_force", {force = force, position = go.get_world_position()})
+	timer.delay(2, false, function() go.delete() end)
+end

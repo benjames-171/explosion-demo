@@ -1,6 +1,6 @@
 components {
   id: "pfx"
-  component: "/game/object/explosion.particlefx"
+  component: "/game/object/fireball.particlefx"
   position {
     x: 0.0
     y: 0.0
@@ -15,7 +15,7 @@ components {
 }
 components {
   id: "script"
-  component: "/game/object/explosion.script"
+  component: "/game/object/fireball.script"
   position {
     x: 0.0
     y: 0.0
@@ -32,12 +32,11 @@ embedded_components {
   id: "co"
   type: "collisionobject"
   data: "collision_shape: \"\"\n"
-  "type: COLLISION_OBJECT_TYPE_KINEMATIC\n"
-  "mass: 0.0\n"
+  "type: COLLISION_OBJECT_TYPE_DYNAMIC\n"
+  "mass: 1.0\n"
   "friction: 0.1\n"
   "restitution: 0.5\n"
-  "group: \"explode\"\n"
-  "mask: \"missile\"\n"
+  "group: \"\"\n"
   "embedded_collision_shape {\n"
   "  shapes {\n"
   "    shape_type: TYPE_SPHERE\n"
