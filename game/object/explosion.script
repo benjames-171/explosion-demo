@@ -1,5 +1,8 @@
+local data = require "main.data"
+
 function init(self)
 	particlefx.play("#pfx")
+	data.sound("exp-small")
 	timer.delay(1, false, function() msg.post("#co", "disable") end)
 	timer.delay(1.5, false, function() go.delete() end)
 end

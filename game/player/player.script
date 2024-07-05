@@ -21,7 +21,8 @@ end
 
 local function input_playing(self, action_id, action)
 	if action_id == hash("action") and action.pressed then
-		factory.create("#shot-fac", nil, nil, {target = vmath.vector3(action.x, action.y, 0) / data.PIXEL_SIZE})
+		local target = vmath.vector3(action.x, action.y, 0) / data.PIXEL_SIZE
+		factory.create("#shot-fac", nil, nil, {target = target})
 		data.sound("shot")
 	elseif action_id == hash("exit") and action.pressed then
 		msg.post("view#pause", "show")
@@ -34,9 +35,14 @@ local function input_gameover(self, action_id, action)
 	end
 end
 
+local function barrel(self, action)
+	local pos = vmath.vector3(action.x / data.PIXEL_SIZE, action.y / data.PIXEL_SIZE, 0) - go.get_position("gun-barrel")
+	go.set("gun-barrel", "euler.z", math.deg(math.atan2(pos.y, pos.x)))
+end
+
 function on_input(self, action_id, action)
 	if action_id == nil then
-		go.set_position(vmath.vector3(action.screen_x / data.PIXEL_SIZE, action.screen_y / data.PIXEL_SIZE, 0))
+		barrel(self, action)
 	elseif data.state == data.STATE_PLAYING then
 		input_playing(self, action_id, action)
 	elseif data.state == data.STATE_PAUSE then

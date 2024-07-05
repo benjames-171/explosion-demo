@@ -33,3 +33,6 @@ title = explosion demo
 dependencies#0 = https://github.com/subsoap/defos/archive/master.zip
 dependencies#1 = https://github.com/defold/lua-language-server/releases/download/v0.0.5/release.zip
 
+[particle_fx]
+max_particle_count = 2048
+

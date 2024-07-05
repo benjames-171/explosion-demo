@@ -4,12 +4,14 @@ go.property("target", vmath.vector3())
 
 local function explode(self)
 	go.delete()
+	factory.create("#exp-fac")
 end
 
 function init(self)
 	particlefx.play("#pfx")
-	local pos = go.get_position("gun")
-	go.set_position(pos)
+	local pos = go.get_position("gun-barrel")
+	local vec = vmath.normalize(self.target - pos)
+	go.set_position(pos + (vec * 6))
 	local time = vmath.length(self.target - pos) / 150
 	go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, self.target, go.EASING_LINEAR, time, 0, explode)
 end
