@@ -11,7 +11,7 @@ function init(self)
 end
 
 function update(self, dt)
-	defos.set_cursor_visible(data.state ~= data.STATE_PLAYING)
+	--defos.set_cursor_visible(data.state ~= data.STATE_PLAYING)
 end
 
 function on_message(self, message_id, message,sender)

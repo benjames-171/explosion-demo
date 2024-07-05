@@ -16,8 +16,6 @@ function init(self)
 
 	data.SCR_W = render.get_width()
 	data.SCR_H = render.get_height()
-	data.CANV_W = data.SCR_W / data.PIXEL_SIZE
-	data.CANV_H = data.SCR_H / data.PIXEL_SIZE
 end
 
 function update(self)

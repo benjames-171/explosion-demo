@@ -9,8 +9,8 @@ M.state = M.STATE_MENU
 
 M.SCR_W = 0
 M.SCR_H = 0
-M.CANV_W = 0
-M.CANV_H = 0
+M.CANV_W = 256
+M.CANV_H = 144
 M.TILE_SIZE = 16
 M.PIXEL_SIZE = 4
 M.MAX_LEVELS = 10
@@ -19,6 +19,10 @@ M.level = 1
 M.time = 0
 M.currentsong = nil
 M.gate = {}
+
+M.S = 30
+M.cityx = {M.S, M.S*2, M.S*3, M.CANV_W - M.S,M.CANV_W - M.S * 2,M.CANV_W - M.S * 3}
+M.cityy = 20
 
 M.APP_NAME = "defexp"
 M.FILE_NAME = "defexp.sav"

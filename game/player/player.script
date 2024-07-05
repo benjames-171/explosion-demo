@@ -22,6 +22,8 @@ end
 local function input_playing(self, action_id, action)
 	if action_id == hash("action") and action.pressed then
 		factory.create("#shot-fac", nil, nil, {target = vmath.vector3(action.x, action.y, 0) / data.PIXEL_SIZE})
+	elseif action_id == hash("exit") and action.pressed then
+		msg.post("view#pause", "show")
 	end
 end
 
