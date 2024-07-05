@@ -1,0 +1,4 @@
+local data = require "main.data"
+
+function init(self)
+end

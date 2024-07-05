@@ -1,0 +1,48 @@
+local data = require "main.data"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+end
+
+local function pauseinput(time)
+	msg.post(".", "release_input_focus")
+	timer.delay(time, false, function() msg.post(".", "acquire_input_focus") end)
+end
+
+local function quit2menu(self)
+	msg.post("main:/sound", "stop_sound")
+	msg.post("main:/handler", "show_menu")
+end
+
+function update(self, dt)
+	if data.state == data.STATE_PLAYING then
+	end
+end
+
+local function input_playing(self, action_id, action)
+	if action_id == hash("action") and action.pressed then
+
+	end
+end
+
+local function input_gameover(self, action_id, action)
+	if action_id == hash("exit") and action.pressed then
+		quit2menu(self)
+	end
+end
+
+function on_input(self, action_id, action)
+	if data.state == data.STATE_PLAYING then
+		input_playing(self, action_id, action)
+	elseif data.state == data.STATE_PAUSE then
+		msg.post("view#pause", "input", {action_id = action_id, action = action})
+	elseif data.state == data.STATE_GAMEOVER then
+		input_gameover(self, action_id, action)
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("quit") then
+		quit2menu(self)
+	end
+end
