@@ -99,10 +99,7 @@ function M.stopmusic()
 end
 
 function M.onscreen(p, m)
-	if p.x > M.scroll.x - m and
-	p.x < M.scroll.x + m + M.offset.x * 2 and
-	p.y > M.scroll.y - m and
-	p.y < M.scroll.y + m + M.offset.y * 2 then
+	if p.x > -m and p.x < m + M.CANV_W and p.y > -m and p.y < m + M.CANV_H then
 		return true
 	else
 		return false

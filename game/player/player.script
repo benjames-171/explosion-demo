@@ -21,7 +21,7 @@ end
 
 local function input_playing(self, action_id, action)
 	if action_id == hash("action") and action.pressed then
-
+		factory.create("#shot-fac", nil, nil, {target = vmath.vector3(action.x, action.y, 0) / data.PIXEL_SIZE})
 	end
 end
 
@@ -32,7 +32,9 @@ local function input_gameover(self, action_id, action)
 end
 
 function on_input(self, action_id, action)
-	if data.state == data.STATE_PLAYING then
+	if action_id == nil then
+		go.set_position(vmath.vector3(action.screen_x / data.PIXEL_SIZE, action.screen_y / data.PIXEL_SIZE, 0))
+	elseif data.state == data.STATE_PLAYING then
 		input_playing(self, action_id, action)
 	elseif data.state == data.STATE_PAUSE then
 		msg.post("view#pause", "input", {action_id = action_id, action = action})

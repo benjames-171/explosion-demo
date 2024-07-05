@@ -1,0 +1,37 @@
+local data = require "main.data"
+
+go.property("target", vmath.vector3())
+
+local SPEED = 250
+
+function init(self)
+	particlefx.play("#pfx")
+	local pos = go.get_position("gun")
+	go.set_position(pos)
+	self.move = self.target - pos
+	self.move = vmath.normalize(self.move)
+
+	pprint(pos, self.target)
+end
+
+function final(self)
+	particlefx.stop("#pfx")
+end
+
+function update(self, dt)
+	if data.state == data.STATE_PLAYING then
+		local pos = go.get_position()
+		pos = pos + (self.move * dt * SPEED)
+		go.set_position(pos)
+		if not data.onscreen(pos, 16) then
+			go.delete()
+		end
+	end
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("collision_response") then
+		go.delete()
+	end
+end
+
