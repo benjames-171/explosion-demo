@@ -10,8 +10,6 @@ function init(self)
 	go.set_position(pos)
 	self.move = self.target - pos
 	self.move = vmath.normalize(self.move)
-
-	pprint(pos, self.target)
 end
 
 function final(self)
