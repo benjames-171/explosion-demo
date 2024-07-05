@@ -28,6 +28,8 @@ max_count = 0
 game_binding = /main/game.input_bindingc
 
 [project]
+version = v0.1
+title = explosion demo
 dependencies#0 = https://github.com/subsoap/defos/archive/master.zip
 dependencies#1 = https://github.com/defold/lua-language-server/releases/download/v0.0.5/release.zip
 

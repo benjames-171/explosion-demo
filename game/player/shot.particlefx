@@ -1,5 +1,5 @@
 emitters {
-  id: "emitter"
+  id: "trail"
   mode: PLAY_MODE_LOOP
   duration: 0.1
   space: EMISSION_SPACE_WORLD
@@ -15,19 +15,19 @@ emitters {
     w: 1.0
   }
   tile_source: "/game/core/game.tilesource"
-  animation: "fire"
+  animation: "trail"
   material: "/builtins/materials/particlefx.material"
   blend_mode: BLEND_MODE_ALPHA
   particle_orientation: PARTICLE_ORIENTATION_DEFAULT
   inherit_velocity: 0.0
-  max_particle_count: 32
+  max_particle_count: 64
   type: EMITTER_TYPE_CIRCLE
   start_delay: 0.0
   properties {
     key: EMITTER_KEY_SPAWN_RATE
     points {
       x: 0.0
-      y: 128.0
+      y: 256.0
       t_x: 1.0
       t_y: 0.0
     }
@@ -37,7 +37,7 @@ emitters {
     key: EMITTER_KEY_SIZE_X
     points {
       x: 0.0
-      y: 0.0
+      y: 2.0
       t_x: 1.0
       t_y: 0.0
     }
@@ -47,7 +47,7 @@ emitters {
     key: EMITTER_KEY_SIZE_Y
     points {
       x: 0.0
-      y: 0.0
+      y: 2.0
       t_x: 1.0
       t_y: 0.0
     }
@@ -67,7 +67,7 @@ emitters {
     key: EMITTER_KEY_PARTICLE_LIFE_TIME
     points {
       x: 0.0
-      y: 0.3
+      y: 0.2
       t_x: 1.0
       t_y: 0.0
     }
@@ -77,21 +77,21 @@ emitters {
     key: EMITTER_KEY_PARTICLE_SPEED
     points {
       x: 0.0
-      y: 8.0
+      y: 2.0
       t_x: 1.0
       t_y: 0.0
     }
-    spread: 0.0
+    spread: 1.0
   }
   properties {
     key: EMITTER_KEY_PARTICLE_SIZE
     points {
       x: 0.0
-      y: 8.0
+      y: 16.0
       t_x: 1.0
       t_y: 0.0
     }
-    spread: 2.0
+    spread: 4.0
   }
   properties {
     key: EMITTER_KEY_PARTICLE_RED
@@ -131,7 +131,7 @@ emitters {
       t_x: 1.0
       t_y: 0.0
     }
-    spread: 0.0
+    spread: 0.5
   }
   properties {
     key: EMITTER_KEY_PARTICLE_ROTATION
@@ -177,7 +177,7 @@ emitters {
     key: PARTICLE_KEY_SCALE
     points {
       x: 0.0
-      y: 1.0
+      y: 0.39372736
       t_x: 1.0
       t_y: 0.0
     }
@@ -213,9 +213,9 @@ emitters {
     key: PARTICLE_KEY_ALPHA
     points {
       x: 0.0
-      y: 0.0
-      t_x: 0.07194582
-      t_y: 0.99740857
+      y: 1.0
+      t_x: 1.0
+      t_y: 0.0
     }
   }
   particle_properties {

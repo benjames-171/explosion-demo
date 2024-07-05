@@ -5,4 +5,9 @@ function init(self)
 		local pos = vmath.vector3(data.cityx[n], data.cityy, 0)
 		factory.create("#city-fac", pos)
 	end
+
+	for n = 1, 8 do
+		local pos = vmath.vector3(math.random(0, data.CANV_W*2), 32 + (n * 10), -0.5)
+		factory.create("#cloud-fac", pos)
+	end
 end

@@ -19,7 +19,7 @@ local function input(self, action_id, action)
 			close(self)
 		elseif gui.pick_node(gui.get_node("quit"), action.x, action.y) then
 			msg.post("main:/handler", "set_time_step", {factor = 1, mode = 0})
-			msg.post("/common/player", "quit")
+			msg.post("player", "quit")
 		end
 	end
 end

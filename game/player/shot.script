@@ -2,30 +2,22 @@ local data = require "main.data"
 
 go.property("target", vmath.vector3())
 
-local SPEED = 250
+local function explode(self)
+	go.delete()
+end
 
 function init(self)
 	particlefx.play("#pfx")
 	local pos = go.get_position("gun")
 	go.set_position(pos)
-	self.move = self.target - pos
-	self.move = vmath.normalize(self.move)
+	local time = vmath.length(self.target - pos) / 150
+	go.animate(".", "position", go.PLAYBACK_ONCE_FORWARD, self.target, go.EASING_LINEAR, time, 0, explode)
 end
 
 function final(self)
 	particlefx.stop("#pfx")
 end
 
-function update(self, dt)
-	if data.state == data.STATE_PLAYING then
-		local pos = go.get_position()
-		pos = pos + (self.move * dt * SPEED)
-		go.set_position(pos)
-		if not data.onscreen(pos, 16) then
-			go.delete()
-		end
-	end
-end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("collision_response") then
